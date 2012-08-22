@@ -11,7 +11,7 @@
     :author "John Doe"
     :creator "Jane Doe"
     :doc-header ["inspired by" "William Shakespeare"]
-    :header "page header"
+    :header "Sample Report"
     :footer ""
     :footer-seperator "of"
     :pages true ; specifies that the total pages should be printed in the footer of each page
@@ -88,30 +88,25 @@
 ;=======================================  
 ; Helper functions for report generation
 ;=======================================
-(defn start-report [doc]
-  (conj doc report-skeleton))
+(defn add-header [header-content]
+  [:heading header-content])
 
-(defn add-header [doc header-content]
-  (conj doc [:heading header-content]))
+(defn add-table-header [col-names]
+  [:table {:header col-names
+           :width 50
+           :border true
+           :cell-border true}])
 
-(defn add-table-header [doc col-names]
-  (conj doc [:table {:header col-names
-                    :width 50
-                    :border true
-                    :cell-border true}]))
-
-(defn add-table-row [doc row]
-  (conj doc row))
+(defn add-table-row [row]
+  row)
 
 ; Generate the desired pdf report
-(defn gen-report [data] 
-  (let [doc []] 
-    (do
-      (start-report doc)
-      (add-header doc "Sample Report")
-      (add-table-header doc ["Order" "Description" "Quantity" "Cost"])
-      (add-table-row doc [51 "A description" 2 12.3])
-      (pdf/pdf doc "test.pdf"))))
+(defn gen-report [data]
+ (let [x 
+       (conj report-skeleton 
+             (conj (add-table-header ["A" "B" "C"])
+                   (add-table-row ["D" "E" "F"])))]
+   (pdf/pdf x "test.pdf")))
 
 
 
