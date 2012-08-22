@@ -1,6 +1,5 @@
 (ns clj-genpdf.views.welcome
-  (:require [clj-genpdf.views.common :as common]
-            [noir.content.getting-started])
+  (:require [clj-genpdf.views.common :as common])
   (:use [noir.core :only [defpage]]
         [hiccup.core :only [html]]))
 
