@@ -13,7 +13,7 @@
     :doc-header ["inspired by" "William Shakespeare"]
     :header "Sample Report"
     :footer ""
-    :footer-seperator "of"
+    :footer-separator " of "
     :pages true ; specifies that the total pages should be printed in the footer of each page
     }])
 
