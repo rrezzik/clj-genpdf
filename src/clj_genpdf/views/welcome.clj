@@ -5,12 +5,11 @@
         [hiccup.core :only [html]]))
 
 
-; Application root. Redirects to /report
-;(defpage "/" []
-;         (common/landing))
+; Application root. Has a download link to /report
+(defpage "/" []
+         (common/landing))
 
 
 ; Report page. The user will be prompted to download the report.
 (defpage "/report" []
          (pdfgen/gen-report []))
-         ;(common/report))

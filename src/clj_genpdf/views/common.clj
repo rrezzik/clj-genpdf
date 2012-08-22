@@ -2,11 +2,9 @@
   (:use [noir.core :only [defpartial]]
         [hiccup.page-helpers :only [include-css html5]]))
 
-(defpartial layout [& content]
+(defpartial landing [& content]
             (html5
               [:head
-               [:title "clj-genpdf"]
-               (include-css "/css/reset.css")]
+               [:title "Sample Report"]]
               [:body
-               [:div#wrapper
-                content]]))
+               [:a {:href "/report"} [:button "Download Report"]]]))
