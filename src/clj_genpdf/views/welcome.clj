@@ -2,6 +2,7 @@
   (:require [clj-genpdf.views.common :as common]
             [clj-genpdf.models.pdfgen :as pdfgen])
   (:use [noir.core :only [defpage]]
+        [noir.response :only [redirect]]
         [hiccup.core :only [html]]))
 
 
@@ -12,4 +13,6 @@
 
 ; Report page. The user will be prompted to download the report.
 (defpage "/report" []
-         (pdfgen/gen-report []))
+         (do
+           (pdfgen/gen-report [])
+           (common/download-report)))
