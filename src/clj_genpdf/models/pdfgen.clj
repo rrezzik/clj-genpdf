@@ -1,5 +1,5 @@
-(ns clj-genpdf.genpdf
-  (:use [clj-pdf :as pdf]
+(ns clj-genpdf.models.pdfgen
+  (:use [clj-pdf.core :as pdf]
         [clojure.java.io :as io]))
 
 ; Basic report meta-data and such
@@ -15,7 +15,7 @@
     :footer ""
     :footer-seperator "of"
     :pages true ; specifies that the total pages should be printed in the footer of each page
-    }]
+    }])
 
 ; Ugly. This will be removed (just loaded from a file) later. This is for quickly moving along.
 (def sample-data
@@ -110,7 +110,7 @@
       (start-report doc)
       (add-header doc "Sample Report")
       (add-table-header doc ["Order" "Description" "Quantity" "Cost"])
-      (add-table-row [51 "A description" 2 12.3])
+      (add-table-row doc [51 "A description" 2 12.3])
       (pdf/pdf doc "test.pdf"))))
 
 
