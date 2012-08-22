@@ -4,6 +4,12 @@
   (:use [noir.core :only [defpage]]
         [hiccup.core :only [html]]))
 
-(defpage "/welcome" []
-         (common/layout
-           [:p "Welcome to clj-genpdf"]))
+
+; Application root. Redirects to /report
+(defpage "/" []
+         (common/landing))
+
+
+; Report page. The user will be prompted to download the report.
+(defpage "/report" []
+         (common/report))
